@@ -1,0 +1,190 @@
+body {
+    background-color: #121212;
+    font-family: 'Courier Prime', monospace;
+}
+
+.main{
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-left: 1rem;
+    padding: 0.3rem;
+}
+
+.data_text{
+    margin-left: 1rem;
+    color: white;
+    font-size: 1.2em;
+    font-family: 'Courier Prime', monospace;
+}
+
+.row{
+    display: flex;
+}
+.col {
+    float : left;
+}
+
+.left{
+    width: 25%;
+}
+.right{
+    width: 75%;
+}
+
+button {
+    display: flex;
+    font-size: 1.2em;
+    margin-top: 1rem;
+    margin-left: 25%;
+    border: none;
+    border-radius: 10px;
+    padding: 5px;
+    padding-right: 2rem;
+    padding-left: 2rem;
+    background-color: crimson;
+    color: black;
+    font-family: 'Courier Prime', monospace;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, .1);
+    outline: none;
+
+}
+
+.btn-direct{
+    padding-right: 2.85rem;
+    padding-left: 2.5rem;
+}
+
+.btn-undirect{
+    padding-right: 2rem;
+    padding-left: 2rem;
+}
+
+.btn-index{
+    padding-right: 2.33rem;
+    padding-left: 2.4rem;
+}
+
+.btn-wt{
+    text-align: center;
+    padding-right: 6.8rem;
+    padding-left: 5rem;
+    margin-left: 1rem;
+    margin-right: 1rem; 
+}
+
+.btn-unwt{
+    text-align: center;
+    padding-right: 5.5rem;
+    padding-left: 5rem;
+    margin-left: 1rem;
+    margin-right: 1rem; 
+}
+
+.btn-gen{
+    text-align: center;
+    padding-right: 1.23rem;
+    padding-left: 1rem;
+    font-size: 1.1rem;; 
+}
+
+.btn-run{
+    padding-right: 4rem;
+    padding-left: 4rem;
+}
+
+.edges_input{
+    display: block;
+    width: 90%;
+    height: 214px;
+    margin-top: 1.3rem;
+    margin-left: 1rem;
+    border: none;
+    color: white;
+    background-color: rgb(255, 255, 255, .05);
+    border-radius: 10px;
+    padding-top: 0.5em;
+    padding-left: .5em;
+    font-size: 1.2em;
+    outline: none;
+    resize: none;
+    box-sizing: border-box;
+    font-family: 'Courier Prime', monospace;
+    font-weight: bold;
+}
+
+.visual{
+    height: 81vh;
+    width: 153vh;
+    margin: 15px;
+    border: none;
+    color: white;
+    background-color: rgb(255, 255, 255, .05);
+    border-radius: 10px;
+    outline: none;
+    resize: none;
+    box-sizing: border-box;
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    outline: 0;
+    box-shadow: none;
+    border: 0 !important;
+    background: crimson;
+    background-image: none;
+    font-family: 'Courier Prime', monospace;
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+  /* Remove IE arrow */
+  select::-ms-expand {
+    display: none;
+  }
+  /* Custom Select */
+  .select {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-top: 1rem;
+    margin-left: 6rem;
+    width: 10.6em;
+    height: 2.4em;
+    line-height: 3;
+    background: crimson;
+    overflow: hidden;
+    border-radius: .25em;
+  
+  }
+  select {
+    flex: 1;
+    padding: 0 .5em;
+    color: black;
+    cursor: pointer;
+  }
+  /* Arrow */
+  .select::after {
+    content: '\25BC';
+    position: absolute;
+    top: 2;
+    right: 0;
+    padding: 0 1em;
+    background: crimson;
+    cursor: pointer;
+    pointer-events: none;
+    -webkit-transition: .25s all ease;
+    -o-transition: .25s all ease;
+    transition: .25s all ease;
+  }
+  /* Transition */
+  .select:hover::after {
+    color: #f39c12;
+  }
+

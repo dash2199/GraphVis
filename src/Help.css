@@ -1,0 +1,76 @@
+.outer{
+  position: relative;
+  height: 80%;
+  width: 100%;
+}
+
+.slide {
+    position: fixed;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 18%;
+    z-index: 1;
+}
+
+.btn-begin{
+  position: absolute;
+  display: flex;
+  margin-top: 730px;
+  margin-right: 330px;
+  padding-right: 2.33rem;
+  padding-left: 2.4rem;
+  margin-bottom: 5rem;
+  z-index: 1;
+}
+
+.image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1000px;
+    height: 550px;
+    border: 10px;
+}
+.right-arrow{
+    position: absolute;
+    top: 50%;
+    right: -120px;
+    font-size: 4em;
+    color: crimson;
+    z-index: 10;
+    cursor: pointer;
+    user-select: none;
+}
+.left-arrow{
+    position: absolute;
+    top: 50%;
+    left: -140px;
+    font-size: 4rem;
+    color: crimson;
+    z-index: 10;
+    cursor: pointer;
+    user-select: none;
+}
+
+.slider {
+  opacity: 0;
+  transition-duration: 1s ease;
+}
+
+.slider.active {
+  opacity: 1;
+  transition-duration: 1s;
+}
+
+.particles canvas{
+  position: absolute;
+  width: 100%;
+  height: 300%;
+  z-index: -1;
+}
+
+.image{
+  border: 1px solid grey;
+}
