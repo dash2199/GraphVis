@@ -40,6 +40,8 @@ var PQ = {
 
 const Graph = (props) => {
     const container = useRef(null);
+    let start_node = parseInt(props.StartNode);
+
     useEffect(() => {
         var nodes = new DataSet(props.Nodes);
         var edges = new DataSet(props.Edges);
@@ -54,16 +56,24 @@ const Graph = (props) => {
                         enabled: props.Flag
                     }
                 },
+            },
+
+            layout: {
+                randomSeed : 0.9339743977409103,
             }
         };
+
+
         var network = new Network(container.current , data, options);
         network.once('stabilized' , () =>{
             network.moveTo({scale: 1.1}); 
         })
         
-        network.on('zoom' , (e) => {
-            console.log(e.scale);
-        });
+        // network.on('zoom' , (e) => {
+        //     console.log(e.scale);
+        // });
+
+        console.log(network.getSeed());
         // console.log(network.getSeed());
 
         // Adj List;
@@ -119,7 +129,25 @@ const Graph = (props) => {
             let vis = [];
             let st = [];
             let order = [];
-            
+            console.log(start_node);
+            for(let i = start_node; i <= N; i++){
+                if(!vis.includes(i)){
+                    st.push(i);
+                    while(st.length !== 0){
+                        let node = st.pop();
+                        if(!vis.includes(node)){
+                            vis.push(node);
+                            order.push(node);
+                            let children = adj.get(node);
+                            // console.log(node);
+                            for(let c = 0; c < children.length; c++){
+                                st.push(children[c]);
+                            }
+                        }
+                    }
+                }
+            }
+
             for(let i = 1; i <= N; i++){
                 if(!vis.includes(i)){
                     st.push(i);
@@ -137,6 +165,7 @@ const Graph = (props) => {
                     }
                 }
             }
+
             change_color(order);   
         }
 
@@ -146,6 +175,24 @@ const Graph = (props) => {
             let vis = [];
             let q = [];
             let order = [];
+            for(let i = start_node; i <= N; i++){
+                if(!vis.includes(i)){
+                    vis.push(i);
+                    q.push(i);
+                    while(q.length !== 0){
+                        let node = q.shift();
+                        let children = adj.get(node);
+                        order.push(node);
+                        for(let c = 0; c < children.length; c++){
+                            if(!vis.includes(children[c])){
+                                vis.push(children[c]);
+                                q.push(children[c]);
+                            }
+                        }
+                    }
+                }
+            }
+
             for(let i = 1; i <= N; i++){
                 if(!vis.includes(i)){
                     vis.push(i);
@@ -163,6 +210,7 @@ const Graph = (props) => {
                     }
                 }
             }
+
             change_color(order); 
         }
 
@@ -194,9 +242,10 @@ const Graph = (props) => {
             for(let i = 0; i <= N; i++){
                 d[i] = 2e9;
             }
-            d[1] = 0;
+            d[start_node] = 0;
             var pq = PQ.PriorityQueue.make();
-            pq.push(1 , 0);
+            pq.push(start_node , 0);
+
             let order = [];
             while(!pq.empty()){
                 var node = pq.pop();

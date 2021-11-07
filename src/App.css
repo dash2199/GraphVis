@@ -54,18 +54,23 @@ button {
 }
 
 .btn-direct{
-    padding-right: 2.85rem;
-    padding-left: 2.5rem;
+    padding-right: 3.85rem;
+    padding-left: 3.5rem;
+}
+
+.btn-main{
+    padding-right: 3.2rem;
+    padding-left: 2.9rem;
 }
 
 .btn-undirect{
-    padding-right: 2rem;
-    padding-left: 2rem;
+    padding-right: 3.05rem;
+    padding-left: 3rem;
 }
 
 .btn-index{
-    padding-right: 2.33rem;
-    padding-left: 2.4rem;
+    padding-right: 3.33rem;
+    padding-left: 3.4rem;
 }
 
 .btn-wt{
@@ -86,14 +91,22 @@ button {
 
 .btn-gen{
     text-align: center;
-    padding-right: 1.23rem;
-    padding-left: 1rem;
+    padding-right: 2.2rem;
+    padding-left: 2rem;
     font-size: 1.1rem;; 
 }
 
+.btn-vis{
+    text-align: center;
+    padding: 0.5rem;
+    font-size: 1rem; 
+}
+
 .btn-run{
+    margin-top: 1.5rem;
+    margin-left: 10rem;
     padding-right: 4rem;
-    padding-left: 4rem;
+    padding-left: 4.5rem;
 }
 
 .edges_input{
@@ -154,7 +167,8 @@ select {
     align-items: center;
     position: relative;
     margin-top: 1rem;
-    margin-left: 6rem;
+    margin-left: 10rem;
+    padding-right: 0.4rem;
     width: 10.6em;
     height: 2.4em;
     line-height: 3;
@@ -188,3 +202,46 @@ select {
     color: #f39c12;
   }
 
+  .ModalBackground{
+    position: relative;
+    top: -10px;
+  }
+
+  .enode{
+    font-size: 17px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding : 2.7rem 2rem;
+    padding-top: 4rem;
+    color: white;
+  }
+
+  .input {
+    border: none;
+    -webkit-appearance: none;
+    -ms-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    color: white;
+    border-radius: 5px;
+    width: 200px;
+    height: 35px;
+    padding-left: 0.5rem;
+    font-size: 17px;
+    background-color: rgb(255, 255, 255, .05);
+    margin-left: 4%;
+  }
+
+  .btn-closemodal{
+    position: relative;
+    top: -25px;
+    right: -24px;
+    height: 0;
+    width: 0%;
+    margin-left: 27rem;
+    color: white;
+    font-size: 20px;
+    background: transparent;
+    cursor: pointer;
+  }

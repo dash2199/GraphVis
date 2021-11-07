@@ -4,8 +4,34 @@ import React, { useEffect , useState} from 'react';
 import {BrowserRouter as Router , Route} from 'react-router-dom';
 import Help from './Help';
 import Partles from './Particles'
+import Modal from 'react-modal';
+
+const modalcss = {
+    overlay: {
+      backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    },
+    content: {
+        width: '500px',
+        height: '300px',
+        top: '50%',
+        left: '50%',
+        right: 'auto',
+        bottom: 'auto',
+        marginRight: '-50%',
+        backgroundColor: '#121212',
+        background: 'red',
+        transform: 'translate(-50%, -50%)',
+        border: '1px solid grey',
+    },
+
+
+};
+
 let input = "";
 let type = "";
+let start = "1";
+
+Modal.setAppElement('#root');
 
 function App(props) {
   const [curNode , setNode] = useState([]);
@@ -19,6 +45,7 @@ function App(props) {
   const [isType , setType] = useState("");
   const [istmp , settmp] = useState(false);
   const [trig, setTrig] = useState(true);
+  const [modal , setModal] = useState(false);
   
   useEffect (() =>{
     input = document.getElementById('input_edges');
@@ -103,7 +130,7 @@ function App(props) {
         if(curFlag === true){
           return "Directed";
         }else{
-          return "UnDirected";
+          return "Undirected";
         }
       });
 
@@ -169,6 +196,7 @@ function App(props) {
     }else{
         settmp(false);
     }
+    setModal(false);
     setType(type);
     if(type === "ALGO" || type === ""){
       alert("Choose an algorithm first pls...");
@@ -213,6 +241,12 @@ function App(props) {
     setEdge(edges2);
     setType(".");
   }
+
+  const handleModal = (e) => {
+    setModal(true);
+    setType("");
+  }
+
   return (
     <>
     
@@ -231,23 +265,40 @@ function App(props) {
           <button type = "submit" onClick = {handleWt} className = {isWted ? "btn-unwt" : "btn-wt"}>{isWted ? "Unweighted Graph?" : "Weighted Graph?"}</button>
             <h1 className = "data_text">Graph Data :</h1>
             <textarea className = "edges_input" placeholder = {isWted ? "Enter edges in this format:\nu1 v1 wt1\nu2 v2 wt2\n. .\n. .\nun vn wtn" : "Enter edges in this format:\nu1 v1\nu2 v2\n. .\n. .\nun vn"} id = "input_edges"></textarea>
-            <button type = "submit" onClick = {handleClick}>Visualize!</button>
+            <button type = "submit" onClick = {handleClick}  className = 'btn-main'>Visualize!</button>
             <button type = "submit" onClick = {handleClick3} className = "btn-index">{curTextIdx}</button>
             <button type = "submit" onClick = {handleClick2} className = {isActive ? "btn-direct" : "btn-undirect"}>{curText}</button>
             <button type = "submit" onClick = {handleClick5} className = "btn-gen">Generate Graph</button>
-            <div className="select">
-              <select onChange = {handleChange}>
-                  <option value = "ALGO">Algorithms</option>
-                  <option value = "DFS">DFS</option>
-                  <option value = "BFS">BFS</option>
-                  <option value = "Djikstra">Djikstra</option>
-              </select>
-            </div>
-            <button type = "submit" onClick = {handleClick4} className = "btn-run">Run!</button>
+            
+            <button type = "submit" onClick = {handleModal} className = "btn-vis">Visualize Algorithms!</button>
+            
+              <Modal isOpen = {modal} onRequestClose = {() => setModal(false)} style = {modalcss}>
+              <button type = "submit" onClick = {() => setModal(false)} className = "btn-closemodal">X</button>
+              <div className = "ModalBackground">
+                <form>
+                    <div className = "enode">
+                      Enter Start Node : 
+                      <input type = "text" className = "input" onChange = {(e) => start = e.target.value}></input>
+                    </div>
+                </form>
+                <div className="select">
+                  <select onChange = {handleChange}>
+                      <option value = "ALGO">Algorithms</option>
+                      <option value = "DFS">DFS</option>
+                      <option value = "BFS">BFS</option>
+                      <option value = "Djikstra">Djikstra</option>
+                  </select>
+                </div>
+                <button type = "submit" onClick = {handleClick4} className = "btn-run">Run!</button>
+              </div>
+              </Modal>
+             
           </div>
           <div className = "col right">
-            <Graph Nodes = {curNode} Edges = {curEdge} Flag = {curFlag} Type = {isType} Wted = {isWted}/>
+            <Graph Nodes = {curNode} Edges = {curEdge} Flag = {curFlag} Type = {isType} Wted = {isWted} StartNode = {start}/>
           </div>
+
+
       </div>
       {/* </Route> */}
       
